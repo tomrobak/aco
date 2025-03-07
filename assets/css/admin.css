@@ -326,4 +326,52 @@
         transform: translateY(100vh) rotate(720deg);
         opacity: 0;
     }
+}
+
+/* Button message - displays near save buttons */
+.woocommerce_page_wc-settings .aco-button-message {
+    padding: 10px 15px;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    animation: fadeIn 0.5s ease-in-out;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.woocommerce_page_wc-settings .aco-button-message .dashicons {
+    margin-right: 10px;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+.woocommerce_page_wc-settings .aco-button-message.success {
+    background-color: #f0fff4;
+    border-left: 4px solid #46b450;
+    color: #2a844e;
+}
+
+.woocommerce_page_wc-settings .aco-button-message.success .dashicons {
+    color: #46b450;
+}
+
+.woocommerce_page_wc-settings .aco-button-message.error {
+    background-color: #fef7f7;
+    border-left: 4px solid #dc3232;
+    color: #b32d2d;
+}
+
+.woocommerce_page_wc-settings .aco-button-message.error .dashicons {
+    color: #dc3232;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 } 

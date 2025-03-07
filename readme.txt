@@ -4,7 +4,7 @@ Tags: woocommerce, order, complete, autocomplete, virtual, payment
 Requires at least: 6.7
 Tested up to: 6.8
 Requires PHP: 8.0
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -95,6 +95,10 @@ Not at all! The plugin is designed to be lightweight and only runs when an order
 
 == Changelog ==
 
+= 1.2.4 =
+* **NEW**: Added prominent confirmation messages near the Save buttons
+* **NEW**: Improved save feedback with eye-catching success indicators
+
 = 1.2.3 =
 * **NEW**: Added fun confetti celebration when settings are saved (because saving should be fun!)
 * **NEW**: Added witty success messages when saving settings (they're randomized for extra joy!)
@@ -134,6 +138,9 @@ Not at all! The plugin is designed to be lightweight and only runs when an order
 * **NEW**: Detailed order notes when actions are taken
 
 == Upgrade Notice ==
+
+= 1.2.4 =
+✨ Now with crystal-clear save confirmations! You'll never wonder if your settings saved - get eye-catching success messages right next to the buttons. No confusion, all fun!
 
 = 1.2.3 =
 🎉 Confetti celebration when you save your settings! Plus witty & random success messages to brighten your day! Settings saving has never been this fun! 

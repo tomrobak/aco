@@ -170,6 +170,9 @@ jQuery(document).ready(function($) {
         // Add a visual indicator that saving is in progress
         $('.aco-status-message').addClass('saving');
         
+        // Clear any previous button success message
+        $('.aco-button-message').remove();
+        
         $.ajax({
             url: aco_params.ajax_url,
             type: 'POST',
@@ -183,6 +186,10 @@ jQuery(document).ready(function($) {
                 if (response.success) {
                     showStatusMessage(aco_params.messages.saved, 'success');
                     
+                    // Add small success message near the buttons
+                    var $submitArea = $('p.submit');
+                    $submitArea.prepend('<div class="aco-button-message success"><span class="dashicons dashicons-yes-alt"></span> Setting saved successfully!</div>');
+                    
                     // Mark as saved
                     settingsChanged = false;
                     $('.aco-status-message').removeClass('saving');
@@ -194,11 +201,19 @@ jQuery(document).ready(function($) {
                 } else {
                     showStatusMessage(response.data.message || aco_params.messages.error, 'error');
                     $('.aco-status-message').removeClass('saving');
+                    
+                    // Add error message near the buttons
+                    var $submitArea = $('p.submit');
+                    $submitArea.prepend('<div class="aco-button-message error"><span class="dashicons dashicons-warning"></span> Error saving settings</div>');
                 }
             },
             error: function() {
                 showStatusMessage(aco_params.messages.error, 'error');
                 $('.aco-status-message').removeClass('saving');
+                
+                // Add error message near the buttons
+                var $submitArea = $('p.submit');
+                $submitArea.prepend('<div class="aco-button-message error"><span class="dashicons dashicons-warning"></span> Error saving settings</div>');
             }
         });
     }
@@ -211,6 +226,9 @@ jQuery(document).ready(function($) {
         
         // Prevent double-clicking
         $('.woocommerce-save-button').prop('disabled', true);
+        
+        // Clear any previous button success message
+        $('.aco-button-message').remove();
         
         // Collect all settings
         var settings = {};
@@ -245,6 +263,10 @@ jQuery(document).ready(function($) {
                     // Show success message with confetti effect
                     showStatusMessage(randomMessage, 'success');
                     
+                    // Add prominent success message near the buttons
+                    var $submitArea = $('p.submit');
+                    $submitArea.prepend('<div class="aco-button-message success"><span class="dashicons dashicons-yes-alt"></span> ' + randomMessage + '</div>');
+                    
                     // Add a celebration animation
                     celebrateSuccess();
                     
@@ -253,6 +275,10 @@ jQuery(document).ready(function($) {
                 } else {
                     showStatusMessage(response.data.message || 'Error saving settings', 'error');
                     $('.aco-status-message').removeClass('saving');
+                    
+                    // Add error message near the buttons
+                    var $submitArea = $('p.submit');
+                    $submitArea.prepend('<div class="aco-button-message error"><span class="dashicons dashicons-warning"></span> Error saving settings</div>');
                 }
                 // Re-enable the button
                 $('.woocommerce-save-button').prop('disabled', false);
@@ -260,6 +286,11 @@ jQuery(document).ready(function($) {
             error: function() {
                 showStatusMessage('Error saving settings', 'error');
                 $('.aco-status-message').removeClass('saving');
+                
+                // Add error message near the buttons
+                var $submitArea = $('p.submit');
+                $submitArea.prepend('<div class="aco-button-message error"><span class="dashicons dashicons-warning"></span> Error saving settings</div>');
+                
                 // Re-enable the button
                 $('.woocommerce-save-button').prop('disabled', false);
             }

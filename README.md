@@ -71,6 +71,10 @@ Since shipping and access to products shouldn't happen until payment is received
 
 ## 🛠️ Changelog
 
+### 1.2.4
+* **NEW**: Added prominent confirmation messages near the Save buttons
+* **NEW**: Improved save feedback with eye-catching success indicators
+
 ### 1.2.3
 * **NEW**: Added fun confetti celebration when settings are saved (because saving should be fun!)
 * **NEW**: Added witty success messages when saving settings (they're randomized for extra joy!)
