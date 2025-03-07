@@ -1,4 +1,4 @@
-name: Release Asset
+name: Release Assets
 
 on:
   release:
@@ -13,17 +13,25 @@ jobs:
     name: Create consistent ZIP file
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: 📥 Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-      - name: Create clean build directory
+      - name: 🧹 Prepare build directory
         run: |
+          echo "🚀 Creating clean build for Autocomplete Orders for WooCommerce..."
           mkdir -p build/aco
-          cp -r * build/aco/ 2>/dev/null || :
-          rm -rf build/aco/.git build/aco/.github build/aco/.DS_Store build/aco/*/.DS_Store
+          # Copy all files to build directory
+          rsync -av --exclude='.git' --exclude='.github' --exclude='.DS_Store' --exclude='build' . build/aco/
+          # Clean up any unnecessary files
+          find build/aco -name '.DS_Store' -type f -delete
+          # Create the ZIP file
           cd build && zip -r aco.zip aco
-      
-      - name: Upload Release Asset
-        uses: softprops/action-gh-release@v1
+          echo "✅ Build complete! Created aco.zip"
+          ls -la
+
+      - name: 📦 Upload to release
+        uses: softprops/action-gh-release@v2
         with:
           files: ./build/aco.zip 
