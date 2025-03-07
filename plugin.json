@@ -1,0 +1,51 @@
+{
+    "name": "Autocomplete Orders for WooCommerce",
+    "version": "1.0.0",
+    "description": "Supercharge your WooCommerce store by automatically completing orders based on your preferences. No more manual order processing - let the magic happen!",
+    "author": "wplove.co",
+    "author_uri": "https://tomrobak.com",
+    "plugin_uri": "https://wplove.co/community/space/plugins-themes/home",
+    "requires_php": "8.0",
+    "requires_wp": "6.7",
+    "tested_up_to": "6.8",
+    "wc_requires": "8.0.0",
+    "wc_tested_up_to": "8.5.0",
+    "license": "GPL-2.0+",
+    "tags": [
+        "woocommerce",
+        "order",
+        "autocomplete",
+        "automation",
+        "virtual",
+        "payment"
+    ],
+    "documentation": "https://wplove.co/community/space/plugins-themes/home",
+    "support": "https://tomrobak.com",
+    "changelog": [
+        {
+            "version": "1.0.0",
+            "changes": [
+                {
+                    "type": "NEW",
+                    "description": "Initial release with multiple autocomplete modes"
+                },
+                {
+                    "type": "NEW",
+                    "description": "Support for changing default order status by payment gateway"
+                },
+                {
+                    "type": "NEW",
+                    "description": "Payment verification with 1-minute delay option"
+                },
+                {
+                    "type": "NEW",
+                    "description": "Modern settings page with intuitive controls"
+                },
+                {
+                    "type": "NEW",
+                    "description": "Detailed order notes when actions are taken"
+                }
+            ]
+        }
+    ]
+} 

@@ -1,0 +1,138 @@
+/**
+ * Admin CSS for Autocomplete Orders
+ */
+
+.woocommerce_page_wc-settings .aco-header {
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    border-left: 4px solid #7f54b3;
+}
+
+.woocommerce_page_wc-settings .aco-header h2 {
+    margin-top: 0;
+    color: #7f54b3;
+}
+
+.woocommerce_page_wc-settings .aco-header p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Bootstrap-like styling for form elements */
+.woocommerce_page_wc-settings .aco-form-group {
+    margin-bottom: 15px;
+}
+
+.woocommerce_page_wc-settings .aco-form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.woocommerce_page_wc-settings .aco-form-group .wc-enhanced-select {
+    width: 100% !important;
+}
+
+/* Section styling */
+.woocommerce_page_wc-settings .aco-section {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.woocommerce_page_wc-settings .aco-section h3 {
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Custom toggle switch for checkbox */
+.woocommerce_page_wc-settings .aco-toggle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.woocommerce_page_wc-settings .aco-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.woocommerce_page_wc-settings .aco-toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.woocommerce_page_wc-settings .aco-toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.woocommerce_page_wc-settings .aco-toggle input:checked + .aco-toggle-slider {
+    background-color: #7f54b3;
+}
+
+.woocommerce_page_wc-settings .aco-toggle input:checked + .aco-toggle-slider:before {
+    transform: translateX(26px);
+}
+
+/* Info boxes */
+.woocommerce_page_wc-settings .aco-info-box {
+    background: #f8f8f8;
+    border-left: 4px solid #7f54b3;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 3px;
+}
+
+.woocommerce_page_wc-settings .aco-info-box.warning {
+    border-left-color: #ffba00;
+}
+
+.woocommerce_page_wc-settings .aco-info-box.success {
+    border-left-color: #46b450;
+}
+
+/* Help tip styling */
+.woocommerce_page_wc-settings .aco-help-tip {
+    color: #7f54b3;
+    margin-left: 5px;
+}
+
+/* Gateway settings styles */
+.woocommerce_page_wc-settings .aco-gateway {
+    padding: 10px;
+    border: 1px solid #eee;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    background: #fafafa;
+}
+
+.woocommerce_page_wc-settings .aco-gateway:hover {
+    background: #f5f5f5;
+}
+
+.woocommerce_page_wc-settings .aco-gateway-title {
+    font-weight: 600;
+} 
