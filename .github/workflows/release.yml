@@ -4,13 +4,17 @@ on:
   release:
     types: [published]
 
+# Add explicit permissions for the workflow
+permissions:
+  contents: write
+
 jobs:
   build:
     name: Create consistent ZIP file
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Create clean build directory
         run: |
@@ -20,11 +24,6 @@ jobs:
           cd build && zip -r aco.zip aco
       
       - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v1
         with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ./build/aco.zip
-          asset_name: aco.zip
-          asset_content_type: application/zip 
+          files: ./build/aco.zip 
