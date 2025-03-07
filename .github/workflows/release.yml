@@ -1,0 +1,30 @@
+name: Release Asset
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    name: Create consistent ZIP file
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create clean build directory
+        run: |
+          mkdir -p build/aco
+          cp -r * build/aco/ 2>/dev/null || :
+          rm -rf build/aco/.git build/aco/.github build/aco/.DS_Store build/aco/*/.DS_Store
+          cd build && zip -r aco.zip aco
+      
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./build/aco.zip
+          asset_name: aco.zip
+          asset_content_type: application/zip 

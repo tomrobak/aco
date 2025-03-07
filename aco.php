@@ -97,6 +97,14 @@ final class AutocompleteOrders {
         
         // Core functionality
         require_once ACO_PATH . 'includes/class-aco-core.php';
+        
+        // GitHub Updater
+        require_once ACO_PATH . 'includes/class-aco-updater.php';
+        
+        // Initialize GitHub updater
+        if (is_admin()) {
+            new ACO_Updater(ACO_FILE, 'tomrobak', 'aco');
+        }
     }
     
     /**
