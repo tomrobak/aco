@@ -71,6 +71,12 @@ Since shipping and access to products shouldn't happen until payment is received
 
 ## 🛠️ Changelog
 
+### 1.2.1
+* **NEW**: Added magical 'Update Check' button to manually check for plugin updates
+* **FIX**: Fixed AJAX settings saving to actually work this time (we promise!)
+* **NEW**: Improved payment method override explanations so you'll actually know what they do
+* **NEW**: Added colorful alerts for update notifications because updates should be exciting!
+
 ### 1.2.0
 * **FIX**: Fixed Payment Verification toggle not saving correctly
 * **FIX**: Improved GitHub release workflow for better reliability  

@@ -31,6 +31,18 @@ class ACO_Admin {
         
         // AJAX handler for saving settings
         add_action('wp_ajax_aco_save_setting', array($this, 'ajax_save_setting'));
+        
+        // AJAX handler for saving all settings at once
+        add_action('wp_ajax_aco_save_all_settings', array($this, 'ajax_save_all_settings'));
+        
+        // AJAX handler for checking for updates
+        add_action('wp_ajax_aco_check_updates', array($this, 'ajax_check_updates'));
+        
+        // Add the "Check for Updates" button to the plugin row
+        add_filter('plugin_action_links_' . ACO_BASENAME, array($this, 'add_plugin_action_links'), 10, 1);
+        
+        // Add a button to the plugin update message
+        add_action('in_plugin_update_message-' . ACO_BASENAME, array($this, 'add_update_message'), 10, 2);
     }
     
     /**
@@ -85,6 +97,80 @@ class ACO_Admin {
             'setting_id' => $setting_id,
             'value' => $value
         ));
+    }
+    
+    /**
+     * AJAX handler to save all settings at once
+     */
+    public function ajax_save_all_settings() {
+        // Verify nonce
+        if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'aco-admin-nonce')) {
+            wp_send_json_error(array('message' => __('Security check failed', 'aco')));
+        }
+        
+        // Get all settings
+        $settings = isset($_POST['settings']) ? $_POST['settings'] : array();
+        
+        if (empty($settings) || !is_array($settings)) {
+            wp_send_json_error(array('message' => __('No settings to save', 'aco')));
+            return;
+        }
+        
+        // Save each setting
+        foreach ($settings as $setting_id => $value) {
+            // Validate the setting belongs to our plugin
+            if (strpos($setting_id, 'aco_') !== 0) {
+                continue;
+            }
+            
+            // Update the option
+            update_option($setting_id, sanitize_text_field($value));
+        }
+        
+        // Send success response
+        wp_send_json_success(array(
+            'message' => __('All settings saved successfully! 🎉', 'aco'),
+            'count' => count($settings)
+        ));
+    }
+    
+    /**
+     * AJAX handler to check for updates
+     */
+    public function ajax_check_updates() {
+        // Verify nonce
+        if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'aco-admin-nonce')) {
+            wp_send_json_error(array('message' => __('Security check failed', 'aco')));
+        }
+        
+        // Force WordPress to check for plugin updates
+        $current = get_site_transient('update_plugins');
+        set_site_transient('update_plugins', null);
+        wp_update_plugins();
+        $current = get_site_transient('update_plugins');
+        
+        // Check if our plugin has an update
+        $update_available = false;
+        $new_version = '';
+        
+        if (isset($current->response[ACO_BASENAME])) {
+            $update_available = true;
+            $new_version = $current->response[ACO_BASENAME]->new_version;
+        }
+        
+        // Send response
+        if ($update_available) {
+            wp_send_json_success(array(
+                'message' => sprintf(__('Update to version %s available! 🎉', 'aco'), $new_version),
+                'version' => $new_version,
+                'update_available' => true
+            ));
+        } else {
+            wp_send_json_success(array(
+                'message' => __('You have the latest version! 👍', 'aco'),
+                'update_available' => false
+            ));
+        }
     }
     
     /**
@@ -177,6 +263,86 @@ class ACO_Admin {
     }
     
     /**
+     * Add Check for Updates link to plugin actions
+     * 
+     * @param array $links Plugin action links
+     * @return array Modified plugin action links
+     */
+    public function add_plugin_action_links($links) {
+        // Add settings link
+        $settings_link = '<a href="' . admin_url('admin.php?page=wc-settings&tab=aco_settings') . '">' . __('Settings', 'aco') . '</a>';
+        array_unshift($links, $settings_link);
+        
+        // Add Update Check link with bold purple styling
+        $update_link = '<a href="#" id="aco-check-updates" style="font-weight: bold; color: #7f54b3;">' . __('Update Check', 'aco') . '</a>';
+        $links[] = $update_link;
+        
+        // Add script to handle the update check
+        add_action('admin_footer', function() {
+            ?>
+            <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                $('#aco-check-updates').on('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Add loading indicator
+                    $(this).text('Checking...').css('opacity', '0.7');
+                    
+                    // Send AJAX request to check for updates
+                    $.ajax({
+                        url: ajaxurl,
+                        type: 'POST',
+                        data: {
+                            action: 'aco_check_updates',
+                            nonce: '<?php echo wp_create_nonce('aco-admin-nonce'); ?>'
+                        },
+                        success: function(response) {
+                            // Show notification
+                            if (response.success) {
+                                if (response.data.update_available) {
+                                    // Show update available message
+                                    alert('🚀 ' + response.data.message + '\n\nRefresh the page to see the update notification.');
+                                    window.location.reload();
+                                } else {
+                                    // Show no update message
+                                    alert('✅ ' + response.data.message);
+                                }
+                            } else {
+                                // Show error message
+                                alert('❌ Error checking for updates. Please try again later.');
+                            }
+                            
+                            // Reset button text
+                            $('#aco-check-updates').text('Update Check').css('opacity', '1');
+                        },
+                        error: function() {
+                            // Show error message
+                            alert('❌ Error checking for updates. Please try again later.');
+                            
+                            // Reset button text
+                            $('#aco-check-updates').text('Update Check').css('opacity', '1');
+                        }
+                    });
+                });
+            });
+            </script>
+            <?php
+        });
+        
+        return $links;
+    }
+    
+    /**
+     * Add a message to the plugin update notification
+     * 
+     * @param array $plugin_data Plugin data
+     * @param object $response Update response data
+     */
+    public function add_update_message($plugin_data, $response) {
+        echo '<br><span style="color: #7f54b3; font-weight: bold;">' . __('🚀 Woohoo! A new magical update is available!', 'aco') . '</span>';
+    }
+    
+    /**
      * Enqueue admin scripts and styles
      */
     public function enqueue_admin_scripts($hook) {
@@ -186,6 +352,9 @@ class ACO_Admin {
         if ($hook == 'woocommerce_page_wc-settings' && isset($_GET['tab']) && $_GET['tab'] == 'aco_settings') {
             // Enqueue our custom CSS
             wp_enqueue_style('aco-admin-styles', ACO_URL . 'assets/css/admin.css', array(), ACO_VERSION);
+            
+            // Enqueue dashicons for the close button
+            wp_enqueue_style('dashicons');
             
             // Enqueue our custom JS
             wp_enqueue_script('aco-admin-scripts', ACO_URL . 'assets/js/admin.js', array('jquery'), ACO_VERSION, true);

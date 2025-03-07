@@ -2,6 +2,9 @@
  * Admin JavaScript for Autocomplete Orders
  */
 jQuery(document).ready(function($) {
+    // Track if settings have been changed
+    var settingsChanged = false;
+    
     // Add a custom header to the settings page
     if ($('.woocommerce_page_wc-settings').length && $('#aco_section_title').length) {
         $('#aco_section_title').closest('table').before(
@@ -23,6 +26,16 @@ jQuery(document).ready(function($) {
         $('.aco-status-message .close').on('click', function() {
             $('.aco-status-message').fadeOut();
         });
+        
+        // Fix for standard WooCommerce forms - prevent the unsaved changes warning when we're using AJAX
+        $(window).on('beforeunload', function() {
+            if (settingsChanged) {
+                return true;
+            }
+        });
+        
+        // Make sure WooCommerce doesn't interfere with our AJAX saving
+        $(document).off('change', '.woocommerce-save-button');
     }
     
     // Add styling to sections
@@ -56,10 +69,15 @@ jQuery(document).ready(function($) {
     $('#aco_payment_gateways_section').closest('tr').after(
         '<tr>' +
             '<td colspan="2">' +
-                '<div class="aco-info-box info">' +
-                    '<p><strong>🔍 When should I use these payment method overrides?</strong></p>' +
-                    '<p>You only need to change these settings if you want specific payment methods to behave differently than your main Autocomplete Mode setting.</p>' +
-                    '<p>For example, you might want to automatically complete all orders (Autocomplete Mode = "All Orders") but keep Cash on Delivery orders as "On Hold" for manual review.</p>' +
+                '<div class="aco-info-box warning">' +
+                    '<p><strong>🔍 Important: When to use payment method overrides</strong></p>' +
+                    '<p>These settings let you override the default order status for specific payment methods, regardless of your Autocomplete Mode setting above.</p>' +
+                    '<p><strong>For example:</strong></p>' +
+                    '<ul>' +
+                        '<li>If you want Cash on Delivery orders to stay as "On Hold" for manual review (even if your main setting completes all orders), set Cash on Delivery Default Status to "On Hold".</li>' +
+                        '<li>If you want all payment methods to behave according to your main setting, leave these all as "Default".</li>' +
+                    '</ul>' +
+                    '<p><strong>Note:</strong> Some payment methods like Check Payments, Direct Bank Transfer, and Cash on Delivery usually set orders to "On Hold" by default. If you want these to be automatically completed, set them to "Completed" here.</p>' +
                 '</div>' +
             '</td>' +
         '</tr>'
@@ -89,11 +107,23 @@ jQuery(document).ready(function($) {
         $toggle.after('<span class="description">' + labelText + '</span>');
     });
     
+    // Prevent the standard form submission
+    $('#mainform').on('submit', function(e) {
+        if ($('#aco_section_title').length) {
+            e.preventDefault();
+            saveAllSettings();
+            return false;
+        }
+    });
+    
     // Initialize AJAX saving for toggles
     $(document).on('change', '.aco-ajax-checkbox', function() {
         var $checkbox = $(this);
         var settingId = $checkbox.attr('id');
         var value = $checkbox.prop('checked') ? 'yes' : 'no';
+        
+        // Mark settings as changed
+        settingsChanged = true;
         
         // Show saving status
         showStatusMessage(aco_params.messages.saving, 'info');
@@ -116,6 +146,9 @@ jQuery(document).ready(function($) {
                 return;
             }
         }
+        
+        // Mark settings as changed
+        settingsChanged = true;
         
         // Save the current value for potential revert
         $select.data('previous-value', value);
@@ -142,6 +175,9 @@ jQuery(document).ready(function($) {
                 if (response.success) {
                     showStatusMessage(aco_params.messages.saved, 'success');
                     
+                    // Mark as saved
+                    settingsChanged = false;
+                    
                     // If this was the autocomplete mode, update the UI
                     if (settingId === 'aco_autocomplete_mode') {
                         updateAutocompleteUI(value);
@@ -152,6 +188,49 @@ jQuery(document).ready(function($) {
             },
             error: function() {
                 showStatusMessage(aco_params.messages.error, 'error');
+            }
+        });
+    }
+    
+    // Function to save all settings at once
+    function saveAllSettings() {
+        // Show saving message
+        showStatusMessage('Saving all settings...', 'info');
+        
+        // Collect all settings
+        var settings = {};
+        
+        // Collect checkbox values
+        $('.aco-ajax-checkbox').each(function() {
+            var $checkbox = $(this);
+            settings[$checkbox.attr('id')] = $checkbox.prop('checked') ? 'yes' : 'no';
+        });
+        
+        // Collect select values
+        $('.aco-ajax-select').each(function() {
+            var $select = $(this);
+            settings[$select.attr('id')] = $select.val();
+        });
+        
+        // Save all settings at once
+        $.ajax({
+            url: aco_params.ajax_url,
+            type: 'POST',
+            data: {
+                action: 'aco_save_all_settings',
+                nonce: aco_params.nonce,
+                settings: settings
+            },
+            success: function(response) {
+                if (response.success) {
+                    showStatusMessage('All settings saved successfully! 🎉', 'success');
+                    settingsChanged = false;
+                } else {
+                    showStatusMessage(response.data.message || 'Error saving settings', 'error');
+                }
+            },
+            error: function() {
+                showStatusMessage('Error saving settings', 'error');
             }
         });
     }
@@ -183,14 +262,16 @@ jQuery(document).ready(function($) {
         });
     }
     
-    // Hide the submit button since we're using AJAX
-    $('p.submit').hide();
+    // Keep the submit button but change its text and functionality
+    $('p.submit button.woocommerce-save-button').text('Save All Settings').on('click', function(e) {
+        e.preventDefault();
+        saveAllSettings();
+        return false;
+    });
     
     // Add a reset button next to the original submit
-    $('p.submit').before(
-        '<div class="aco-action-buttons">' +
-            '<button type="button" class="button button-secondary" id="aco-reset-settings">Reset to Defaults</button>' +
-        '</div>'
+    $('p.submit').append(
+        '<button type="button" class="button button-secondary" id="aco-reset-settings" style="margin-left: 10px;">Reset to Defaults</button>'
     );
     
     // Handle reset button
@@ -211,6 +292,7 @@ jQuery(document).ready(function($) {
             });
             
             showStatusMessage('All settings reset to defaults ✓', 'success');
+            settingsChanged = false;
         }
     });
 }); 
