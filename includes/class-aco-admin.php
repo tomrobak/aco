@@ -269,8 +269,19 @@ class ACO_Admin {
      * @return array Modified plugin action links
      */
     public function add_plugin_action_links($links) {
-        // Settings link is already added by WooCommerce for WC extensions, don't add a duplicate
-        if (!isset($links['settings'])) {
+        // Check if any settings link already exists
+        $has_settings = false;
+        foreach ($links as $link) {
+            // If any link text contains "Settings" or contains our settings URL, don't add another one
+            if (strpos($link, '>Settings<') !== false || 
+                strpos($link, 'page=wc-settings&tab=aco_settings') !== false) {
+                $has_settings = true;
+                break;
+            }
+        }
+        
+        // Only add settings link if none exists
+        if (!$has_settings) {
             $settings_link = '<a href="' . admin_url('admin.php?page=wc-settings&tab=aco_settings') . '">' . __('Settings', 'aco') . '</a>';
             array_unshift($links, $settings_link);
         }
