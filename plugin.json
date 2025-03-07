@@ -1,6 +1,6 @@
 {
     "name": "Autocomplete Orders for WooCommerce",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "description": "Supercharge your WooCommerce store by automatically completing orders based on your preferences. No more manual order processing - let the magic happen!",
     "author": "wplove.co",
     "author_uri": "https://wplove.co",
@@ -22,6 +22,23 @@
     "documentation": "https://wplove.co/community/space/plugins-themes/home",
     "support": "https://wplove.co",
     "changelog": [
+        {
+            "version": "1.2.3",
+            "changes": [
+                {
+                    "type": "NEW",
+                    "description": "Added fun confetti celebration when settings are saved (because saving should be fun!)"
+                },
+                {
+                    "type": "NEW",
+                    "description": "Added witty success messages when saving settings (they're randomized for extra joy!)"
+                },
+                {
+                    "type": "FIX",
+                    "description": "Permanently fixed duplicate Settings links in the plugins page"
+                }
+            ]
+        },
         {
             "version": "1.2.2",
             "changes": [

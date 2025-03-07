@@ -238,7 +238,16 @@ jQuery(document).ready(function($) {
             },
             success: function(response) {
                 if (response.success) {
-                    showStatusMessage('All settings saved successfully! 🎉', 'success');
+                    // Get a random fun message
+                    var funMessages = aco_params.messages.fun_success;
+                    var randomMessage = funMessages[Math.floor(Math.random() * funMessages.length)];
+                    
+                    // Show success message with confetti effect
+                    showStatusMessage(randomMessage, 'success');
+                    
+                    // Add a celebration animation
+                    celebrateSuccess();
+                    
                     settingsChanged = false;
                     $('.aco-status-message').removeClass('saving');
                 } else {
@@ -264,12 +273,50 @@ jQuery(document).ready(function($) {
         $statusMessage.find('.message').text(message);
         $statusMessage.fadeIn();
         
-        // Auto-hide success and info messages after 3 seconds
+        // Auto-hide success and info messages after 5 seconds (increased from 3)
         if (type === 'success' || type === 'info') {
             setTimeout(function() {
                 $statusMessage.fadeOut();
-            }, 3000);
+            }, 5000);
         }
+    }
+    
+    // Function for success celebration animation
+    function celebrateSuccess() {
+        // Create celebration container if it doesn't exist
+        if ($('#aco-celebration').length === 0) {
+            $('body').append('<div id="aco-celebration"></div>');
+        }
+        
+        // Create confetti elements
+        var colors = ['#7f54b3', '#46b450', '#ffba00', '#2271b1', '#dc3232'];
+        var confettiCount = 50;
+        var $celebration = $('#aco-celebration');
+        
+        $celebration.empty(); // Clear any previous confetti
+        
+        for (var i = 0; i < confettiCount; i++) {
+            var $confetti = $('<div class="aco-confetti"></div>');
+            var color = colors[Math.floor(Math.random() * colors.length)];
+            var left = Math.random() * 100;
+            var size = Math.random() * 10 + 5;
+            var duration = Math.random() * 3 + 2;
+            
+            $confetti.css({
+                'background-color': color,
+                'left': left + '%',
+                'width': size + 'px',
+                'height': size + 'px',
+                'animation-duration': duration + 's'
+            });
+            
+            $celebration.append($confetti);
+        }
+        
+        // Remove celebration after animation completes
+        setTimeout(function() {
+            $celebration.empty();
+        }, 5000);
     }
     
     // Function to update UI based on autocomplete mode

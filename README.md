@@ -71,6 +71,11 @@ Since shipping and access to products shouldn't happen until payment is received
 
 ## 🛠️ Changelog
 
+### 1.2.3
+* **NEW**: Added fun confetti celebration when settings are saved (because saving should be fun!)
+* **NEW**: Added witty success messages when saving settings (they're randomized for extra joy!)
+* **FIX**: Permanently fixed duplicate Settings links in the plugins page
+
 ### 1.2.2
 * **FIX**: Fixed duplicate Settings links in the plugin list
 * **FIX**: Fixed saving indicator animation loop that never ended

@@ -381,6 +381,15 @@ class ACO_Admin {
                     'saved'   => __('✓ Saved!', 'aco'),
                     'error'   => __('Error saving', 'aco'),
                     'confirm_all' => __('🔔 You\'re about to set ALL paid orders to be automatically completed. This is great for digital products but may not be ideal if you ship physical products. Continue?', 'aco'),
+                    'fun_success' => array(
+                        __('Woohoo! Settings saved with magical WooCommerce powers! 🧙‍♂️', 'aco'),
+                        __('Boom! Your settings are now locked and loaded! 🚀', 'aco'),
+                        __('High five! Your automation just got even more awesome! ✋', 'aco'),
+                        __('Settings saved! Your orders will now complete themselves... like magic! ✨', 'aco'),
+                        __('Success! Orders will now autocomplete faster than you can say "WooCommerce"! 🏎️', 'aco'),
+                        __('Yippee! Your settings were saved and your orders are ready to party! 🎉', 'aco'),
+                        __('Pow! Settings saved! Now your orders will practically complete themselves! 💪', 'aco')
+                    )
                 )
             ));
         }
