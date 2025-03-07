@@ -4,7 +4,7 @@ Tags: woocommerce, order, complete, autocomplete, virtual, payment
 Requires at least: 6.7
 Tested up to: 6.8
 Requires PHP: 8.0
-Stable tag: 1.2.4
+Stable tag: 1.2.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,6 +94,18 @@ Not at all! The plugin is designed to be lightweight and only runs when an order
 3. Modern toggle switches and user-friendly interface
 
 == Changelog ==
+
+= 1.2.5 =
+* **NEW**: Added full plugin translation for 8 languages:
+* 🇵🇱 Polish: "Usprawnij swój sklep WooCommerce, automatycznie realizując zamówienia!"
+* 🇩🇪 German: "Boost für deinen WooCommerce-Shop: Aufträge werden automatisch abgeschlossen!"
+* 🇪🇸 Spanish: "¡Potencia tu tienda WooCommerce completando automáticamente los pedidos!"
+* 🇮🇹 Italian: "Potenzia il tuo negozio WooCommerce completando automaticamente gli ordini!"
+* 🇨🇿 Czech: "Vylepšete svůj obchod WooCommerce automatickým dokončováním objednávek!"
+* 🇸🇰 Slovak: "Vylepšite svoj obchod WooCommerce automatickým dokončovaním objednávok!"
+* 🇫🇷 French: "Boostez votre boutique WooCommerce en complétant automatiquement les commandes!"
+* 🇵🇹 Portuguese: "Melhore sua loja WooCommerce concluindo pedidos automaticamente!"
+* **FIX**: Minor code improvements and stability enhancements
 
 = 1.2.4 =
 * **NEW**: Added prominent confirmation messages near the Save buttons
