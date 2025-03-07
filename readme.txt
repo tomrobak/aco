@@ -4,7 +4,7 @@ Tags: woocommerce, order, complete, autocomplete, virtual, payment
 Requires at least: 6.7
 Tested up to: 6.8
 Requires PHP: 8.0
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -95,6 +95,9 @@ Not at all! The plugin is designed to be lightweight and only runs when an order
 
 == Changelog ==
 
+= 1.1.0 =
+* **FIX**: Updated plugin metadata and general improvements
+
 = 1.0.0 =
 * **NEW**: Initial release with multiple autocomplete modes
 * **NEW**: Support for changing default order status by payment gateway  
@@ -103,6 +106,9 @@ Not at all! The plugin is designed to be lightweight and only runs when an order
 * **NEW**: Detailed order notes when actions are taken
 
 == Upgrade Notice ==
+
+= 1.1.0 =
+This update includes general improvements and metadata updates. Update recommended!
 
 = 1.0.0 =
 Initial release of Autocomplete Orders for WooCommerce 

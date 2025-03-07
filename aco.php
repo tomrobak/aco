@@ -3,9 +3,9 @@
  * Plugin Name: Autocomplete Orders for WooCommerce
  * Plugin URI: https://wplove.co/community/space/plugins-themes/home
  * Description: Supercharge your WooCommerce store by automatically completing orders based on your preferences. No more manual order processing - let the magic happen!
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: wplove.co
- * Author URI: https://tomrobak.com
+ * Author URI: https://wplove.co
  * Text Domain: aco
  * Domain Path: /languages
  * Requires at least: 6.7
@@ -21,7 +21,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('ACO_VERSION', '1.0.0');
+define('ACO_VERSION', '1.1.0');
 define('ACO_FILE', __FILE__);
 define('ACO_PATH', plugin_dir_path(__FILE__));
 define('ACO_URL', plugin_dir_url(__FILE__));

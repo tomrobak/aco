@@ -71,6 +71,9 @@ Since shipping and access to products shouldn't happen until payment is received
 
 ## 🛠️ Changelog
 
+### 1.1.0
+* **FIX**: Updated plugin metadata and general improvements
+
 ### 1.0.0
 * **NEW**: Initial release with multiple autocomplete modes
 * **NEW**: Support for changing default order status by payment gateway
@@ -82,7 +85,7 @@ Since shipping and access to products shouldn't happen until payment is received
 
 Need help? Have a feature request? You can reach us at:
 * [Plugin Homepage](https://wplove.co/community/space/plugins-themes/home)
-* [Support](https://tomrobak.com)
+* [Support](https://wplove.co)
 
 ## 📝 License
 
