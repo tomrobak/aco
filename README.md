@@ -71,6 +71,12 @@ Since shipping and access to products shouldn't happen until payment is received
 
 ## 🛠️ Changelog
 
+### 1.2.2
+* **FIX**: Fixed duplicate Settings links in the plugin list
+* **FIX**: Fixed saving indicator animation loop that never ended
+* **NEW**: Made settings page fully responsive for all devices and screen sizes
+* **NEW**: Improved status notifications with better positioning and animations
+
 ### 1.2.1
 * **NEW**: Added magical 'Update Check' button to manually check for plugin updates
 * **FIX**: Fixed AJAX settings saving to actually work this time (we promise!)

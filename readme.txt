@@ -4,7 +4,7 @@ Tags: woocommerce, order, complete, autocomplete, virtual, payment
 Requires at least: 6.7
 Tested up to: 6.8
 Requires PHP: 8.0
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -95,6 +95,12 @@ Not at all! The plugin is designed to be lightweight and only runs when an order
 
 == Changelog ==
 
+= 1.2.2 =
+* **FIX**: Fixed duplicate Settings links in the plugin list
+* **FIX**: Fixed saving indicator animation loop that never ended
+* **NEW**: Made settings page fully responsive for all devices and screen sizes
+* **NEW**: Improved status notifications with better positioning and animations
+
 = 1.2.1 =
 * **NEW**: Added magical 'Update Check' button to manually check for plugin updates
 * **FIX**: Fixed AJAX settings saving to actually work this time (we promise!)
@@ -123,6 +129,9 @@ Not at all! The plugin is designed to be lightweight and only runs when an order
 * **NEW**: Detailed order notes when actions are taken
 
 == Upgrade Notice ==
+
+= 1.2.2 =
+📱 Now mobile-friendly! Fixed duplicate Settings links and the infinite saving animation. Works beautifully on all your devices, from phones to desktops! Upgrade now for a smoother experience!
 
 = 1.2.1 =
 Fixes the AJAX saving (for real this time!) and adds a magical Update Check button. Also makes payment method settings way easier to understand. It's a party! 🎊

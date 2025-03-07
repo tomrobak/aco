@@ -162,6 +162,14 @@ jQuery(document).ready(function($) {
     
     // Function to save a setting via AJAX
     function saveSetting(settingId, value) {
+        // Clear any previous save timers
+        if (window.saveTimer) {
+            clearTimeout(window.saveTimer);
+        }
+        
+        // Add a visual indicator that saving is in progress
+        $('.aco-status-message').addClass('saving');
+        
         $.ajax({
             url: aco_params.ajax_url,
             type: 'POST',
@@ -177,6 +185,7 @@ jQuery(document).ready(function($) {
                     
                     // Mark as saved
                     settingsChanged = false;
+                    $('.aco-status-message').removeClass('saving');
                     
                     // If this was the autocomplete mode, update the UI
                     if (settingId === 'aco_autocomplete_mode') {
@@ -184,10 +193,12 @@ jQuery(document).ready(function($) {
                     }
                 } else {
                     showStatusMessage(response.data.message || aco_params.messages.error, 'error');
+                    $('.aco-status-message').removeClass('saving');
                 }
             },
             error: function() {
                 showStatusMessage(aco_params.messages.error, 'error');
+                $('.aco-status-message').removeClass('saving');
             }
         });
     }
@@ -195,7 +206,11 @@ jQuery(document).ready(function($) {
     // Function to save all settings at once
     function saveAllSettings() {
         // Show saving message
-        showStatusMessage('Saving all settings...', 'info');
+        showStatusMessage(aco_params.messages.saving, 'info');
+        $('.aco-status-message').addClass('saving');
+        
+        // Prevent double-clicking
+        $('.woocommerce-save-button').prop('disabled', true);
         
         // Collect all settings
         var settings = {};
@@ -225,12 +240,19 @@ jQuery(document).ready(function($) {
                 if (response.success) {
                     showStatusMessage('All settings saved successfully! 🎉', 'success');
                     settingsChanged = false;
+                    $('.aco-status-message').removeClass('saving');
                 } else {
                     showStatusMessage(response.data.message || 'Error saving settings', 'error');
+                    $('.aco-status-message').removeClass('saving');
                 }
+                // Re-enable the button
+                $('.woocommerce-save-button').prop('disabled', false);
             },
             error: function() {
                 showStatusMessage('Error saving settings', 'error');
+                $('.aco-status-message').removeClass('saving');
+                // Re-enable the button
+                $('.woocommerce-save-button').prop('disabled', false);
             }
         });
     }

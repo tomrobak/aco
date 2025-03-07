@@ -2,6 +2,7 @@
  * Admin CSS for Autocomplete Orders
  */
 
+/* Main container styling */
 .woocommerce_page_wc-settings .aco-header {
     padding: 20px;
     background: #fff;
@@ -32,6 +33,24 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
+    top: 32px;
+    right: 20px;
+    max-width: 350px;
+    z-index: 9999;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Adding a spinner indicator for saving state */
+.woocommerce_page_wc-settings .aco-status-message.saving .message:after {
+    content: '...';
+    animation: loadingDots 1.5s infinite;
+}
+
+@keyframes loadingDots {
+    0% { content: '.'; }
+    33% { content: '..'; }
+    66% { content: '...'; }
 }
 
 .woocommerce_page_wc-settings .aco-status-message.success {
@@ -206,4 +225,70 @@
 
 .woocommerce_page_wc-settings .aco-action-buttons button {
     margin-left: 10px;
+}
+
+/* Responsive styling */
+@media screen and (max-width: 782px) {
+    .woocommerce_page_wc-settings .aco-header {
+        padding: 15px;
+    }
+    
+    .woocommerce_page_wc-settings .aco-section {
+        padding: 15px;
+    }
+    
+    .woocommerce_page_wc-settings .aco-status-message {
+        top: 46px;
+        right: 10px;
+        max-width: calc(100% - 20px);
+    }
+    
+    .woocommerce_page_wc-settings .form-table td {
+        padding: 10px 0;
+    }
+    
+    .woocommerce_page_wc-settings .aco-form-group label {
+        margin-bottom: 10px;
+    }
+    
+    .woocommerce_page_wc-settings .wc-enhanced-select {
+        max-width: 100%;
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .woocommerce_page_wc-settings .aco-status-message {
+        top: 0;
+    }
+    
+    .woocommerce_page_wc-settings .aco-info-box {
+        padding: 10px;
+    }
+    
+    .woocommerce_page_wc-settings .aco-info-box ul {
+        padding-left: 20px;
+    }
+    
+    /* Make buttons more tappable on mobile */
+    .woocommerce_page_wc-settings p.submit .button {
+        min-height: 40px;
+        line-height: 2.5;
+        padding: 0 14px;
+        font-size: 14px;
+    }
+    
+    .woocommerce_page_wc-settings .aco-toggle {
+        width: 50px;
+        height: 30px;
+    }
+    
+    .woocommerce_page_wc-settings .aco-toggle-slider:before {
+        height: 22px;
+        width: 22px;
+    }
+    
+    .woocommerce_page_wc-settings .aco-toggle input:checked + .aco-toggle-slider:before {
+        transform: translateX(20px);
+    }
 } 

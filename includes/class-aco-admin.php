@@ -269,9 +269,11 @@ class ACO_Admin {
      * @return array Modified plugin action links
      */
     public function add_plugin_action_links($links) {
-        // Add settings link
-        $settings_link = '<a href="' . admin_url('admin.php?page=wc-settings&tab=aco_settings') . '">' . __('Settings', 'aco') . '</a>';
-        array_unshift($links, $settings_link);
+        // Settings link is already added by WooCommerce for WC extensions, don't add a duplicate
+        if (!isset($links['settings'])) {
+            $settings_link = '<a href="' . admin_url('admin.php?page=wc-settings&tab=aco_settings') . '">' . __('Settings', 'aco') . '</a>';
+            array_unshift($links, $settings_link);
+        }
         
         // Add Update Check link with bold purple styling
         $update_link = '<a href="#" id="aco-check-updates" style="font-weight: bold; color: #7f54b3;">' . __('Update Check', 'aco') . '</a>';
