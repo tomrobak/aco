@@ -1,0 +1,185 @@
+# Copyright (C) 2023 wplove.co
+# This file is distributed under the same license as the Autocomplete Orders for WooCommerce plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Autocomplete Orders for WooCommerce 1.2.4\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/aco\n"
+"Last-Translator: wplove.co <support@wplove.co>\n"
+"Language-Team: Portuguese <pt@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-07-14T10:00:00+00:00\n"
+"PO-Revision-Date: 2023-10-30T12:00:00+00:00\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: aco\n"
+"Language: pt\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Plugin Name of the plugin
+msgid "Autocomplete Orders for WooCommerce"
+msgstr "Conclusão Automática de Pedidos para WooCommerce"
+
+#. Plugin URI of the plugin
+msgid "https://wplove.co/community/space/plugins-themes/home"
+msgstr "https://wplove.co/community/space/plugins-themes/home"
+
+#. Description of the plugin
+msgid "Supercharge your WooCommerce store by automatically completing orders based on your preferences. No more manual order processing - let the magic happen!"
+msgstr "Potencialize sua loja WooCommerce concluindo automaticamente os pedidos com base nas suas preferências. Chega de processamento manual de pedidos - deixe a magia acontecer!"
+
+#. Author of the plugin
+msgid "wplove.co"
+msgstr "wplove.co"
+
+#. Author URI of the plugin
+msgid "https://tomrobak.com"
+msgstr "https://wplove.co"
+
+#: includes/class-aco-admin.php:37
+msgid "Autocomplete Orders"
+msgstr "Conclusão Automática de Pedidos"
+
+#: includes/class-aco-admin.php:74
+msgid "Autocomplete Orders Settings"
+msgstr "Configurações de Conclusão Automática de Pedidos"
+
+#: includes/class-aco-admin.php:76
+msgid "Customize how and when your WooCommerce orders are automatically completed. Less manual work, more time for coffee! ☕"
+msgstr "Personalize como e quando seus pedidos WooCommerce são concluídos automaticamente. Menos trabalho manual, mais tempo para café! ☕"
+
+#: includes/class-aco-admin.php:81
+msgid "Autocomplete Mode"
+msgstr "Modo de Conclusão Automática"
+
+#: includes/class-aco-admin.php:82
+msgid "Choose which orders should be automatically completed after payment."
+msgstr "Escolha quais pedidos devem ser concluídos automaticamente após o pagamento."
+
+#: includes/class-aco-admin.php:89
+msgid "None - No orders will be automatically completed"
+msgstr "Nenhum - Nenhum pedido será concluído automaticamente"
+
+#: includes/class-aco-admin.php:90
+msgid "All Orders - All paid orders will be automatically completed"
+msgstr "Todos os Pedidos - Todos os pedidos pagos serão concluídos automaticamente"
+
+#: includes/class-aco-admin.php:91
+msgid "Virtual Orders - Orders with only virtual products will be automatically completed"
+msgstr "Pedidos Virtuais - Pedidos com apenas produtos virtuais serão concluídos automaticamente"
+
+#: includes/class-aco-admin.php:92
+msgid "Virtual & Downloadable Orders - Keep default WooCommerce behavior"
+msgstr "Pedidos Virtuais e Baixáveis - Manter o comportamento padrão do WooCommerce"
+
+#: includes/class-aco-admin.php:97
+msgid "Payment Gateway Order Status"
+msgstr "Status de Pedido por Gateway de Pagamento"
+
+#: includes/class-aco-admin.php:98
+msgid "Change the default order status for WooCommerce core payment methods."
+msgstr "Altere o status padrão do pedido para os métodos de pagamento principais do WooCommerce."
+
+#: includes/class-aco-admin.php:100
+msgid "Customize the default order status for each payment gateway when a payment is received."
+msgstr "Personalize o status padrão do pedido para cada gateway de pagamento quando um pagamento é recebido."
+
+#: includes/class-aco-admin.php:121
+msgid "%s Status"
+msgstr "Status %s"
+
+#: includes/class-aco-admin.php:122
+msgid "Set the default order status for %s payments."
+msgstr "Defina o status padrão do pedido para pagamentos %s."
+
+#: includes/class-aco-admin.php:130
+msgid "Default - Use WooCommerce default"
+msgstr "Padrão - Usar o padrão do WooCommerce"
+
+#: includes/class-aco-admin.php:131
+msgid "Processing"
+msgstr "Processando"
+
+#: includes/class-aco-admin.php:132
+msgid "Completed"
+msgstr "Concluído"
+
+#: includes/class-aco-admin.php:133
+msgid "On Hold"
+msgstr "Em Espera"
+
+#: includes/class-aco-admin.php:140
+msgid "Double Check Payment Status"
+msgstr "Verificação Dupla do Status de Pagamento"
+
+#: includes/class-aco-admin.php:141
+msgid "Wait 1 minute before completing the order to ensure payment is successful (recommended)"
+msgstr "Aguarde 1 minuto antes de concluir o pedido para garantir que o pagamento seja bem-sucedido (recomendado)"
+
+#: includes/class-aco-core.php:96
+msgid "🕒 Autocomplete Orders: Scheduled to check payment status in 1 minute. Hang tight!"
+msgstr "🕒 Conclusão Automática de Pedidos: Agendado para verificar o status do pagamento em 1 minuto. Aguarde!"
+
+#: includes/class-aco-core.php:116
+msgid "⚠️ Autocomplete Orders: Order not marked as paid after 1 minute check. No automatic status change applied."
+msgstr "⚠️ Conclusão Automática de Pedidos: Pedido não marcado como pago após verificação de 1 minuto. Nenhuma alteração automática de status aplicada."
+
+#: includes/class-aco-core.php:177
+msgid "🎉 Order automatically completed by Autocomplete Orders plugin. Magic! ✨"
+msgstr "🎉 Pedido concluído automaticamente pelo plugin Conclusão Automática de Pedidos. Mágico! ✨"
+
+#: includes/class-aco-core.php:207
+msgid "🔄 Order status changed to %s by Autocomplete Orders plugin based on payment method."
+msgstr "🔄 Status do pedido alterado para %s pelo plugin Conclusão Automática de Pedidos com base no método de pagamento."
+
+#: aco.php:87
+msgid "🛒 Oops! Autocomplete Orders needs WooCommerce to work its magic. Please install and activate WooCommerce first, then we can get this party started! 🎉"
+msgstr "🛒 Ops! Conclusão Automática de Pedidos precisa do WooCommerce para fazer sua magia. Por favor, instale e ative o WooCommerce primeiro, então podemos começar a festa! 🎉"
+
+#: aco.php:104
+msgid "Settings"
+msgstr "Configurações"
+
+#: includes/class-aco-admin.php:310
+msgid "Saving..."
+msgstr "Salvando..."
+
+#: includes/class-aco-admin.php:311
+msgid "✓ Saved!"
+msgstr "✓ Salvo!"
+
+#: includes/class-aco-admin.php:312
+msgid "Error saving"
+msgstr "Erro ao salvar"
+
+#: includes/class-aco-admin.php:313
+msgid "🔔 You're about to set ALL paid orders to be automatically completed. This is great for digital products but may not be ideal if you ship physical products. Continue?"
+msgstr "🔔 Você está prestes a configurar TODOS os pedidos pagos para serem concluídos automaticamente. Isso é ótimo para produtos digitais, mas pode não ser ideal se você envia produtos físicos. Continuar?"
+
+#: includes/class-aco-admin.php:315
+msgid "Woohoo! Settings saved with magical WooCommerce powers! 🧙‍♂️"
+msgstr "Oba! Configurações salvas com poderes mágicos do WooCommerce! 🧙‍♂️"
+
+#: includes/class-aco-admin.php:316
+msgid "Boom! Your settings are now locked and loaded! 🚀"
+msgstr "Boom! Suas configurações estão agora travadas e carregadas! 🚀"
+
+#: includes/class-aco-admin.php:317
+msgid "High five! Your automation just got even more awesome! ✋"
+msgstr "Toca aqui! Sua automação ficou ainda mais incrível! ✋"
+
+#: includes/class-aco-admin.php:318
+msgid "Settings saved! Your orders will now complete themselves... like magic! ✨"
+msgstr "Configurações salvas! Seus pedidos agora se concluirão sozinhos... como mágica! ✨"
+
+#: includes/class-aco-admin.php:319
+msgid "Success! Orders will now autocomplete faster than you can say \"WooCommerce\"! 🏎️"
+msgstr "Sucesso! Os pedidos agora serão concluídos automaticamente mais rápido do que você pode dizer \"WooCommerce\"! 🏎️"
+
+#: includes/class-aco-admin.php:320
+msgid "Yippee! Your settings were saved and your orders are ready to party! 🎉"
+msgstr "Iupi! Suas configurações foram salvas e seus pedidos estão prontos para a festa! 🎉"
+
+#: includes/class-aco-admin.php:321
+msgid "Pow! Settings saved! Now your orders will practically complete themselves! 💪"
+msgstr "Pow! Configurações salvas! Agora seus pedidos praticamente se concluirão sozinhos! 💪" 

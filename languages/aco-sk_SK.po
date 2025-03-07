@@ -1,0 +1,185 @@
+# Copyright (C) 2023 wplove.co
+# This file is distributed under the same license as the Autocomplete Orders for WooCommerce plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Autocomplete Orders for WooCommerce 1.2.4\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/aco\n"
+"Last-Translator: wplove.co <support@wplove.co>\n"
+"Language-Team: Slovak <sk@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-07-14T10:00:00+00:00\n"
+"PO-Revision-Date: 2023-10-30T12:00:00+00:00\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: aco\n"
+"Language: sk\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#. Plugin Name of the plugin
+msgid "Autocomplete Orders for WooCommerce"
+msgstr "Automatické Dokončovanie Objednávok pre WooCommerce"
+
+#. Plugin URI of the plugin
+msgid "https://wplove.co/community/space/plugins-themes/home"
+msgstr "https://wplove.co/community/space/plugins-themes/home"
+
+#. Description of the plugin
+msgid "Supercharge your WooCommerce store by automatically completing orders based on your preferences. No more manual order processing - let the magic happen!"
+msgstr "Vylepšite svoj WooCommerce obchod automatickým dokončovaním objednávok na základe vašich preferencií. Koniec s manuálnym spracovaním objednávok - nechajte kúzlo pracovať!"
+
+#. Author of the plugin
+msgid "wplove.co"
+msgstr "wplove.co"
+
+#. Author URI of the plugin
+msgid "https://tomrobak.com"
+msgstr "https://wplove.co"
+
+#: includes/class-aco-admin.php:37
+msgid "Autocomplete Orders"
+msgstr "Automatické Dokončovanie Objednávok"
+
+#: includes/class-aco-admin.php:74
+msgid "Autocomplete Orders Settings"
+msgstr "Nastavenia Automatického Dokončovania Objednávok"
+
+#: includes/class-aco-admin.php:76
+msgid "Customize how and when your WooCommerce orders are automatically completed. Less manual work, more time for coffee! ☕"
+msgstr "Prispôsobte, ako a kedy sú vaše WooCommerce objednávky automaticky dokončované. Menej manuálnej práce, viac času na kávu! ☕"
+
+#: includes/class-aco-admin.php:81
+msgid "Autocomplete Mode"
+msgstr "Režim Automatického Dokončovania"
+
+#: includes/class-aco-admin.php:82
+msgid "Choose which orders should be automatically completed after payment."
+msgstr "Vyberte, ktoré objednávky by mali byť automaticky dokončené po zaplatení."
+
+#: includes/class-aco-admin.php:89
+msgid "None - No orders will be automatically completed"
+msgstr "Žiadne - Žiadne objednávky nebudú automaticky dokončené"
+
+#: includes/class-aco-admin.php:90
+msgid "All Orders - All paid orders will be automatically completed"
+msgstr "Všetky Objednávky - Všetky zaplatené objednávky budú automaticky dokončené"
+
+#: includes/class-aco-admin.php:91
+msgid "Virtual Orders - Orders with only virtual products will be automatically completed"
+msgstr "Virtuálne Objednávky - Objednávky iba s virtuálnymi produktami budú automaticky dokončené"
+
+#: includes/class-aco-admin.php:92
+msgid "Virtual & Downloadable Orders - Keep default WooCommerce behavior"
+msgstr "Virtuálne a Stiahnuteľné Objednávky - Zachovať predvolené správanie WooCommerce"
+
+#: includes/class-aco-admin.php:97
+msgid "Payment Gateway Order Status"
+msgstr "Stav Objednávky Platobnej Brány"
+
+#: includes/class-aco-admin.php:98
+msgid "Change the default order status for WooCommerce core payment methods."
+msgstr "Zmeňte predvolený stav objednávky pre základné platobné metódy WooCommerce."
+
+#: includes/class-aco-admin.php:100
+msgid "Customize the default order status for each payment gateway when a payment is received."
+msgstr "Prispôsobte predvolený stav objednávky pre každú platobnú bránu pri prijatí platby."
+
+#: includes/class-aco-admin.php:121
+msgid "%s Status"
+msgstr "Stav %s"
+
+#: includes/class-aco-admin.php:122
+msgid "Set the default order status for %s payments."
+msgstr "Nastavte predvolený stav objednávky pre platby %s."
+
+#: includes/class-aco-admin.php:130
+msgid "Default - Use WooCommerce default"
+msgstr "Predvolené - Použiť predvolené nastavenie WooCommerce"
+
+#: includes/class-aco-admin.php:131
+msgid "Processing"
+msgstr "Spracováva sa"
+
+#: includes/class-aco-admin.php:132
+msgid "Completed"
+msgstr "Dokončené"
+
+#: includes/class-aco-admin.php:133
+msgid "On Hold"
+msgstr "Pozastavené"
+
+#: includes/class-aco-admin.php:140
+msgid "Double Check Payment Status"
+msgstr "Dvojitá Kontrola Stavu Platby"
+
+#: includes/class-aco-admin.php:141
+msgid "Wait 1 minute before completing the order to ensure payment is successful (recommended)"
+msgstr "Počkajte 1 minútu pred dokončením objednávky, aby ste sa uistili, že platba prebehla úspešne (odporúčané)"
+
+#: includes/class-aco-core.php:96
+msgid "🕒 Autocomplete Orders: Scheduled to check payment status in 1 minute. Hang tight!"
+msgstr "🕒 Automatické Dokončovanie Objednávok: Naplánované skontrolovať stav platby za 1 minútu. Vydržte!"
+
+#: includes/class-aco-core.php:116
+msgid "⚠️ Autocomplete Orders: Order not marked as paid after 1 minute check. No automatic status change applied."
+msgstr "⚠️ Automatické Dokončovanie Objednávok: Objednávka nebola označená ako zaplatená po 1-minútovej kontrole. Nebola vykonaná žiadna automatická zmena stavu."
+
+#: includes/class-aco-core.php:177
+msgid "🎉 Order automatically completed by Autocomplete Orders plugin. Magic! ✨"
+msgstr "🎉 Objednávka automaticky dokončená pluginom Automatické Dokončovanie Objednávok. Kúzlo! ✨"
+
+#: includes/class-aco-core.php:207
+msgid "🔄 Order status changed to %s by Autocomplete Orders plugin based on payment method."
+msgstr "🔄 Stav objednávky zmenený na %s pluginom Automatické Dokončovanie Objednávok na základe platobnej metódy."
+
+#: aco.php:87
+msgid "🛒 Oops! Autocomplete Orders needs WooCommerce to work its magic. Please install and activate WooCommerce first, then we can get this party started! 🎉"
+msgstr "🛒 Ups! Automatické Dokončovanie Objednávok potrebuje WooCommerce, aby mohlo kúzliť. Nainštalujte a aktivujte najprv WooCommerce, potom môžeme túto párty rozbehnúť! 🎉"
+
+#: aco.php:104
+msgid "Settings"
+msgstr "Nastavenia"
+
+#: includes/class-aco-admin.php:310
+msgid "Saving..."
+msgstr "Ukladanie..."
+
+#: includes/class-aco-admin.php:311
+msgid "✓ Saved!"
+msgstr "✓ Uložené!"
+
+#: includes/class-aco-admin.php:312
+msgid "Error saving"
+msgstr "Chyba pri ukladaní"
+
+#: includes/class-aco-admin.php:313
+msgid "🔔 You're about to set ALL paid orders to be automatically completed. This is great for digital products but may not be ideal if you ship physical products. Continue?"
+msgstr "🔔 Chystáte sa nastaviť VŠETKY zaplatené objednávky, aby boli automaticky dokončené. To je skvelé pre digitálne produkty, ale nemusí byť ideálne, ak posielate fyzické produkty. Pokračovať?"
+
+#: includes/class-aco-admin.php:315
+msgid "Woohoo! Settings saved with magical WooCommerce powers! 🧙‍♂️"
+msgstr "Jupí! Nastavenia uložené s magickými silami WooCommerce! 🧙‍♂️"
+
+#: includes/class-aco-admin.php:316
+msgid "Boom! Your settings are now locked and loaded! 🚀"
+msgstr "Bum! Vaše nastavenia sú teraz pripravené a nahraté! 🚀"
+
+#: includes/class-aco-admin.php:317
+msgid "High five! Your automation just got even more awesome! ✋"
+msgstr "Tľapni si! Vaša automatizácia je teraz ešte úžasnejšia! ✋"
+
+#: includes/class-aco-admin.php:318
+msgid "Settings saved! Your orders will now complete themselves... like magic! ✨"
+msgstr "Nastavenia uložené! Vaše objednávky sa teraz dokončia samé... ako kúzlom! ✨"
+
+#: includes/class-aco-admin.php:319
+msgid "Success! Orders will now autocomplete faster than you can say \"WooCommerce\"! 🏎️"
+msgstr "Úspech! Objednávky sa teraz automaticky dokončia rýchlejšie, než poviete \"WooCommerce\"! 🏎️"
+
+#: includes/class-aco-admin.php:320
+msgid "Yippee! Your settings were saved and your orders are ready to party! 🎉"
+msgstr "Hurá! Vaše nastavenia boli uložené a vaše objednávky sú pripravené na párty! 🎉"
+
+#: includes/class-aco-admin.php:321
+msgid "Pow! Settings saved! Now your orders will practically complete themselves! 💪"
+msgstr "Prásk! Nastavenia uložené! Teraz sa vaše objednávky prakticky dokončia samé! 💪" 
