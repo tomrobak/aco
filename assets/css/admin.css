@@ -21,6 +21,57 @@
     color: #555;
 }
 
+/* Status message for AJAX feedback */
+.woocommerce_page_wc-settings .aco-status-message {
+    padding: 10px 15px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    position: relative;
+    animation: fadeInDown 0.3s ease-in-out;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.woocommerce_page_wc-settings .aco-status-message.success {
+    background-color: #f0fff4;
+    border-left: 4px solid #46b450;
+    color: #2a844e;
+}
+
+.woocommerce_page_wc-settings .aco-status-message.error {
+    background-color: #fef7f7;
+    border-left: 4px solid #dc3232;
+    color: #b32d2d;
+}
+
+.woocommerce_page_wc-settings .aco-status-message.info {
+    background-color: #f0f6fc;
+    border-left: 4px solid #2271b1;
+    color: #2271b1;
+}
+
+.woocommerce_page_wc-settings .aco-status-message .close {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.woocommerce_page_wc-settings .aco-status-message .close:hover {
+    opacity: 1;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Bootstrap-like styling for form elements */
 .woocommerce_page_wc-settings .aco-form-group {
     margin-bottom: 15px;
@@ -108,10 +159,17 @@
 
 .woocommerce_page_wc-settings .aco-info-box.warning {
     border-left-color: #ffba00;
+    background-color: #fffbf1;
 }
 
 .woocommerce_page_wc-settings .aco-info-box.success {
     border-left-color: #46b450;
+    background-color: #f0fff4;
+}
+
+.woocommerce_page_wc-settings .aco-info-box.info {
+    border-left-color: #2271b1;
+    background-color: #f0f6fc;
 }
 
 /* Help tip styling */
@@ -135,4 +193,17 @@
 
 .woocommerce_page_wc-settings .aco-gateway-title {
     font-weight: 600;
+}
+
+/* Action buttons */
+.woocommerce_page_wc-settings .aco-action-buttons {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f8f8;
+    border-radius: 3px;
+    text-align: right;
+}
+
+.woocommerce_page_wc-settings .aco-action-buttons button {
+    margin-left: 10px;
 } 

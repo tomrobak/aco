@@ -53,9 +53,19 @@ class ACO_Core {
             return;
         }
         
-        // If double check is enabled, schedule a delayed completion
-        if (get_option('aco_double_check', 'yes') === 'yes') {
+        // Determine if we should use payment verification (double check)
+        $double_check = get_option('aco_double_check');
+        
+        // Fix for the toggle bug - ensure the default is 'yes' if not set
+        if ($double_check === false) {
+            update_option('aco_double_check', 'yes');
+            $double_check = 'yes';
+        }
+        
+        // If payment verification is enabled, schedule a delayed completion
+        if ($double_check === 'yes') {
             $this->schedule_delayed_completion($order_id);
+            $order->add_order_note(__('🔍 Autocomplete Orders: Payment verification is active. Will check again in 1 minute.', 'aco'));
             return;
         }
         

@@ -72,8 +72,11 @@ Since shipping and access to products shouldn't happen until payment is received
 ## 🛠️ Changelog
 
 ### 1.2.0
-* **FIX**: Improved GitHub release workflow for better reliability
-* **NEW**: Enhanced plugin packaging for smoother WordPress installation
+* **FIX**: Fixed Payment Verification toggle not saving correctly
+* **FIX**: Improved GitHub release workflow for better reliability  
+* **NEW**: Added AJAX settings saving for instant changes without page reloads
+* **NEW**: Improved settings UI with clearer explanations of payment method overrides
+* **NEW**: Enhanced status notifications with attractive message styles
 
 ### 1.1.1
 * **NEW**: Added GitHub-based automatic updates

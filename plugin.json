@@ -27,11 +27,23 @@
             "changes": [
                 {
                     "type": "FIX",
+                    "description": "Fixed Payment Verification toggle not saving correctly"
+                },
+                {
+                    "type": "FIX",
                     "description": "Improved GitHub release workflow for better reliability"
                 },
                 {
                     "type": "NEW",
-                    "description": "Enhanced plugin packaging for smoother WordPress installation"
+                    "description": "Added AJAX settings saving for instant changes without page reloads"
+                },
+                {
+                    "type": "NEW",
+                    "description": "Improved settings UI with clearer explanations of payment method overrides"
+                },
+                {
+                    "type": "NEW",
+                    "description": "Enhanced status notifications with attractive message styles"
                 }
             ]
         },

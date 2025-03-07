@@ -28,6 +28,9 @@ class ACO_Admin {
         
         // Add admin scripts and styles
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_scripts'));
+        
+        // AJAX handler for saving settings
+        add_action('wp_ajax_aco_save_setting', array($this, 'ajax_save_setting'));
     }
     
     /**
@@ -56,6 +59,35 @@ class ACO_Admin {
     }
     
     /**
+     * AJAX handler to save individual settings
+     */
+    public function ajax_save_setting() {
+        // Verify nonce
+        if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'aco-admin-nonce')) {
+            wp_send_json_error(array('message' => __('Security check failed', 'aco')));
+        }
+        
+        // Get setting details
+        $setting_id = isset($_POST['setting_id']) ? sanitize_text_field($_POST['setting_id']) : '';
+        $value = isset($_POST['value']) ? sanitize_text_field($_POST['value']) : '';
+        
+        // Validate the setting belongs to our plugin
+        if (strpos($setting_id, 'aco_') !== 0) {
+            wp_send_json_error(array('message' => __('Invalid setting ID', 'aco')));
+        }
+        
+        // Update the option
+        update_option($setting_id, $value);
+        
+        // Send success response
+        wp_send_json_success(array(
+            'message' => __('Setting saved successfully! 🎉', 'aco'),
+            'setting_id' => $setting_id,
+            'value' => $value
+        ));
+    }
+    
+    /**
      * Get settings array
      *
      * @return array
@@ -74,7 +106,7 @@ class ACO_Admin {
                 'desc_tip' => __('Choose which orders should be automatically completed after payment.', 'aco'),
                 'id'       => 'aco_autocomplete_mode',
                 'type'     => 'select',
-                'class'    => 'wc-enhanced-select',
+                'class'    => 'wc-enhanced-select aco-ajax-select',
                 'css'      => 'min-width: 350px;',
                 'default'  => 'none',
                 'options'  => array(
@@ -86,11 +118,11 @@ class ACO_Admin {
             ),
             
             'payment_gateways' => array(
-                'name'     => __('Payment Gateway Order Status', 'aco'),
-                'desc_tip' => __('Change the default order status for WooCommerce core payment methods.', 'aco'),
+                'name'     => __('Order Status Override by Payment Method', 'aco'),
+                'desc_tip' => __('Override the default order status for specific payment methods.', 'aco'),
                 'id'       => 'aco_payment_gateways_section',
                 'type'     => 'title',
-                'desc'     => __('Customize the default order status for each payment gateway when a payment is received.', 'aco'),
+                'desc'     => __('These settings let you override how WooCommerce handles order statuses for specific payment methods. Only change these if you want different behavior than your Autocomplete Mode setting above.', 'aco'),
             ),
         );
         
@@ -110,29 +142,30 @@ class ACO_Admin {
             // Only include core gateways or filter by your preference
             if (in_array($gateway->id, $core_gateways)) {
                 $settings[$gateway->id . '_status'] = array(
-                    'name'     => sprintf(__('%s Status', 'aco'), $gateway->get_title()),
-                    'desc_tip' => sprintf(__('Set the default order status for %s payments.', 'aco'), $gateway->get_title()),
+                    'name'     => sprintf(__('%s Default Status', 'aco'), $gateway->get_title()),
+                    'desc_tip' => sprintf(__('Override the default status for %s payments.', 'aco'), $gateway->get_title()),
                     'id'       => 'aco_' . $gateway->id . '_status',
                     'type'     => 'select',
-                    'class'    => 'wc-enhanced-select',
+                    'class'    => 'wc-enhanced-select aco-ajax-select',
                     'css'      => 'min-width: 350px;',
                     'default'  => '',
                     'options'  => array(
-                        ''            => __('Default - Use WooCommerce default', 'aco'),
-                        'processing'  => __('Processing', 'aco'),
-                        'completed'   => __('Completed', 'aco'),
-                        'on-hold'     => __('On Hold', 'aco'),
+                        ''            => __('Default - Use Autocomplete Mode setting', 'aco'),
+                        'processing'  => __('Processing - Manual completion required', 'aco'),
+                        'completed'   => __('Completed - Automatic completion', 'aco'),
+                        'on-hold'     => __('On Hold - Manual review required', 'aco'),
                     ),
                 );
             }
         }
         
         $settings['double_check'] = array(
-            'name'     => __('Double Check Payment Status', 'aco'),
-            'desc'     => __('Wait 1 minute before completing the order to ensure payment is successful (recommended)', 'aco'),
+            'name'     => __('Payment Verification', 'aco'),
+            'desc'     => __('Wait 1 minute before completing the order to verify payment is successful (recommended for better reliability)', 'aco'),
             'id'       => 'aco_double_check',
             'type'     => 'checkbox',
             'default'  => 'yes',
+            'class'    => 'aco-ajax-checkbox',
         );
         
         $settings['section_end'] = array(
@@ -161,6 +194,12 @@ class ACO_Admin {
             wp_localize_script('aco-admin-scripts', 'aco_params', array(
                 'ajax_url' => admin_url('admin-ajax.php'),
                 'nonce'    => wp_create_nonce('aco-admin-nonce'),
+                'messages' => array(
+                    'saving'  => __('Saving...', 'aco'),
+                    'saved'   => __('✓ Saved!', 'aco'),
+                    'error'   => __('Error saving', 'aco'),
+                    'confirm_all' => __('🔔 You\'re about to set ALL paid orders to be automatically completed. This is great for digital products but may not be ideal if you ship physical products. Continue?', 'aco'),
+                )
             ));
         }
     }

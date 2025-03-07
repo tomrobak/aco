@@ -53,7 +53,7 @@ Since shipping and access to products shouldn't happen until payment is received
 
 Need help? Have a feature request? You can reach us at:
 * [Plugin Homepage](https://wplove.co/community/space/plugins-themes/home)
-* [Support](https://tomrobak.com)
+* [Support](https://wplove.co)
 
 == Installation ==
 
@@ -96,8 +96,11 @@ Not at all! The plugin is designed to be lightweight and only runs when an order
 == Changelog ==
 
 = 1.2.0 =
-* **FIX**: Improved GitHub release workflow for better reliability
-* **NEW**: Enhanced plugin packaging for smoother WordPress installation
+* **FIX**: Fixed Payment Verification toggle not saving correctly
+* **FIX**: Improved GitHub release workflow for better reliability  
+* **NEW**: Added AJAX settings saving for instant changes without page reloads
+* **NEW**: Improved settings UI with clearer explanations of payment method overrides
+* **NEW**: Enhanced status notifications with attractive message styles
 
 = 1.1.1 =
 * **NEW**: Added GitHub-based automatic updates
@@ -116,7 +119,7 @@ Not at all! The plugin is designed to be lightweight and only runs when an order
 == Upgrade Notice ==
 
 = 1.2.0 =
-This update improves the release workflow and installation process. Update recommended for a smoother experience!
+This update adds magical instant-save settings, fixes the Payment Verification toggle, and makes everything more intuitive! Update for a silky-smooth experience! 🎯
 
 = 1.1.1 =
 This update adds automatic updates directly from GitHub and fixes installation issues. Update recommended!
