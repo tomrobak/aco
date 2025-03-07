@@ -71,6 +71,10 @@ Since shipping and access to products shouldn't happen until payment is received
 
 ## 🛠️ Changelog
 
+### 1.1.1
+* **NEW**: Added GitHub-based automatic updates
+* **NEW**: Consistent plugin ZIP file for easier installation
+
 ### 1.1.0
 * **FIX**: Updated plugin metadata and general improvements
 
